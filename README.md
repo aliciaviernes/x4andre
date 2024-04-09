@@ -10,9 +10,7 @@ https://medium.com/@vladkens/how-to-still-scrape-millions-of-tweets-in-2023-usin
     3. ```twscrape login_accounts```
 
 3. ```python main.py``` 
-(For now the tweets are printed out on the console, look into the script for CSV generation!)
 
 4. If you need to interrupt the loop before completion: run ```python close_loop.py```
 
 Das war's!
-# aliciaviernes
