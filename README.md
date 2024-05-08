@@ -13,4 +13,12 @@ https://medium.com/@vladkens/how-to-still-scrape-millions-of-tweets-in-2023-usin
 
 4. If you need to interrupt the loop before completion: run ```python close_loop.py```
 
-Das war's!
+## Sentiment analysis / classification
+
+Three Huggingface models are available and running (see [sentiment_classification](./sentiment_classification/)).
+
+TBD: 
+
+1. code cleaning, 
+2. integration of SpaCy pipeline,
+3. requirements file (yeehaw).
