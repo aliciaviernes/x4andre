@@ -31,24 +31,33 @@ model = AutoModelForSequenceClassification.from_pretrained(MODEL)
 
 #model.save_pretrained(MODEL)
 
-text = "Covid cases are increasing fast!"
-text = preprocess(text)
-encoded_input = tokenizer(text, return_tensors='pt')
-output = model(**encoded_input)
-scores = output[0][0].detach().numpy()
-scores = softmax(scores)
-# # TF
-# model = TFAutoModelForSequenceClassification.from_pretrained(MODEL)
-# model.save_pretrained(MODEL)
-# text = "Covid cases are increasing fast!"
-# encoded_input = tokenizer(text, return_tensors='tf')
-# output = model(encoded_input)
-# scores = output[0][0].numpy()
-# scores = softmax(scores)
-# Print labels and scores
-ranking = np.argsort(scores)
-ranking = ranking[::-1]
-for i in range(scores.shape[0]):
-    l = config.id2label[ranking[i]]
-    s = scores[ranking[i]]
-    print(f"{i+1}) {l} {np.round(float(s), 4)}")
+def roberta_twitter(text):
+    
+    text = preprocess(text)
+    encoded_input = tokenizer(text, return_tensors='pt')
+    output = model(**encoded_input)
+    scores = output[0][0].detach().numpy()
+    scores = softmax(scores)
+    # # TF
+    # model = TFAutoModelForSequenceClassification.from_pretrained(MODEL)
+    # model.save_pretrained(MODEL)
+    # text = "Covid cases are increasing fast!"
+    # encoded_input = tokenizer(text, return_tensors='tf')
+    # output = model(encoded_input)
+    # scores = output[0][0].numpy()
+    # scores = softmax(scores)
+    # Print labels and scores
+    ranking = np.argsort(scores)
+    ranking = ranking[::-1]
+    labels = list()
+    for i in range(scores.shape[0]):
+        l = config.id2label[ranking[i]]
+        labels.append(l)
+    return labels[0]
+        # l = config.id2label[ranking[i]]
+        # s = scores[ranking[i]]
+        # print(f"{i+1}) {l} {np.round(float(s), 4)}")
+
+if __name__ == "__main__":
+    sent = roberta_twitter("Covid cases are increasing fast!")
+    print(sent)
