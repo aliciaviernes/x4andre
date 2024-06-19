@@ -16,9 +16,7 @@ https://medium.com/@vladkens/how-to-still-scrape-millions-of-tweets-in-2023-usin
 ## Sentiment analysis / classification
 
 Three Huggingface models are available and running (see [sentiment_classification](./sentiment_classification/)).
+Check [main.py](./sentiment_classification/main.py).
+Requirements files are only for the sentiment classification tasks, not for Twitter scraping.
 
-TBD: 
-
-1. code cleaning, 
-2. integration of SpaCy pipeline,
-3. requirements file (yeehaw).
+TBD: integration of SpaCy pipeline.
